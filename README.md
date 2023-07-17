@@ -18,6 +18,7 @@ Bushfires in Australia are a widespread and regular occurrence that has contribu
 ### Data Sources:
 
 *   Australia and Global Fire Locations – NASA, Fire Information for Resource Management System (FIRMS)
+*   https://www.kaggle.com/datasets/nagarajbhat/australian-bush-fire-satellite-data-nasa
 
 
 ### Project Data Routes:
