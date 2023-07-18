@@ -21,25 +21,24 @@ Data Source: https://www.kaggle.com/datasets/nagarajbhat/australian-bush-fire-sa
 
 ** Use Flask to create an app instance.
 -	One option (app route) could be:
-o	Using Leaflet to plot fire spots.
-o	Colour gradient based off brightness/intensity.
-o	Layers to toggle between:
+ -	Using Leaflet to plot fire spots.
+ - Colour gradient based off brightness/intensity.
+ - Layers to toggle between:
 	the fire type, or
 	the date (data has 5 months, these could be the options)
+
 o	More detail could be added using the marker hover.
 -	Another app route option could be:
 o	A page with charts:
 	This could be a good place to use the new JS library.
 •	An example is Chart.js which has a lot of chart options and tooltips.
+
 	Options for user dropdown
 •	Day/Night
 •	Fire Type
 •	Date
 •	Satellite
 	Lots of options for charts depending on the choice of user dropdown
-
-
-
 
 
 Requirements
