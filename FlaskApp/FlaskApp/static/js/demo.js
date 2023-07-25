@@ -86,13 +86,16 @@ function minMaxAvg() {
             type: 'line'
         };
         
-        let allData = [traceMin, traceMax, traceAvg];
+        let allData = [traceMax, traceAvg, traceMin];
         
         let layout = {
-            title: {text: "<b>Maximum Brightness Temperature</b><br>No Data Made Available for October</br>"},
+            yaxis: {title: {
+                text: "Degrees Kelvin"
+            }},
+            title: {text: "<b>Maximum Brightness Temperature</b><br>Note: No Data Available for October</br>"},
             barmode: 'group',
-            width: 800,
-            height: 500
+            width: 1500,
+            height: 900
         };
         
         Plotly.newPlot('plot', allData, layout);  

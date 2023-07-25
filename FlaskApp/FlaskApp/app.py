@@ -3,16 +3,16 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/australianbushfires2019/home")
 def viewOne():
     return render_template('map_fire.html')
 
-@app.route("/charts")
+@app.route("/australianbushfires2019/data")
 def viewTwo():
     return render_template('index3.html')
 
 
-@app.route("/morecharts")
+@app.route("/australianbushfires2019/satellitedata")
 def viewThree():
     return render_template('linechart.html')
 
