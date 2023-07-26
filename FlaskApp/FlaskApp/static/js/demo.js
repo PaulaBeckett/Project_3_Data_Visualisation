@@ -3,7 +3,9 @@ csvData = "../../data/minMaxAvg.csv"
 csvData2 = "../../data/allData.csv"
 csvData3 = "../../data/merged_stats.csv"
 
-//check files
+ ////////////////////////////////////////////////////////////////////////////
+
+//check files are being pulled in correctly
 array = d3.csv(csvData).then(function(data) {
   console.log("Array1 : ", data);
 });
@@ -27,15 +29,17 @@ function init() {
 
         for (let i = 0; i < data.length; i++) {
             let row = data[i];
+            //add dates to dropdown list
             dropdownMenu.append('option').text(row.acq_date).property('value');
         };
 
         let selection = data[0].acq_date
         console.log("Made Selection", selection)
 
+        //run functions for the initial load
         displayDetails(selection)
 
-        //run functions for the initial view
+        //run static functions
         minMaxAvg();
 
     })    
@@ -52,6 +56,7 @@ function minMaxAvg() {
         let maximum = [];
         let average = [];
 
+        //populate arrays for plotting use
         for (let i = 0; i < data.length; i++) {
             let row = data[i];
             date.push(row.acq_date);
@@ -60,11 +65,13 @@ function minMaxAvg() {
             average.push(row.average_brightness);            
         };
       
+        //check arrays have populated correctly
       console.log("Date: ", date)
       console.log(minimum)
       console.log(maximum)
       console.log(average)
 
+      //build trace dictionary for chart details and parameters, for each line item
         let traceMin = {
             x: date,
             y: minimum,
@@ -86,18 +93,21 @@ function minMaxAvg() {
             type: 'line'
         };
         
+        //the data array for plotting
         let allData = [traceMax, traceAvg, traceMin];
         
+        //chart layout parameters
         let layout = {
             yaxis: {title: {
                 text: "Degrees Kelvin"
             }},
             title: {text: "<b>Maximum Brightness Temperature</b><br>Note: No Data Available for October</br>"},
             barmode: 'group',
-            width: 1500,
-            height: 900
+            width: 900,
+            height: 500
         };
         
+        //plot line graph
         Plotly.newPlot('plot', allData, layout);  
 
     });
@@ -107,13 +117,17 @@ function minMaxAvg() {
 
 function displayDetails(selection){
     d3.csv(csvData3).then((data) => {
+        //filter for selected value
         let info = data.filter(result => result.acq_date == selection);
         
+        //using the filtered result
         let infoSelection = info[0]
         console.log("info selection: ", infoSelection)
 
+        //define panel ready for contents addition
         let panel = d3.select('#sample-metadata').html('');
 
+        //add the rows of the panel with information for the selected date
         let rowCount = panel.append('tr')
         rowCount.append('td').text('Number of readings: ')
         rowCount.append('td').text(infoSelection.reading_count)
@@ -143,21 +157,21 @@ function displayDetails(selection){
         rowOffshore.append('td').text(infoSelection.offshore)  
 
     })
-}
+};
 
 
 ////////////////////////////////////////////////////////////////////////////
 
+//update page when new date selected
 function optionChanged(choice){
     console.log(choice)
 
+    //call functions to run with new selection
     displayDetails(choice);
     
 };
 
 ////////////////////////////////////////////////////////////////////////////
 
-
-
-////////////////////////////////////////////////////////////////////////////
+//call initial function to create first view
 init(); 
