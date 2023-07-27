@@ -101,7 +101,7 @@ function minMaxAvg() {
             yaxis: {title: {
                 text: "Degrees Kelvin"
             }},
-            title: {text: "<b>Maximum Brightness Temperature</b><br>Note: No Data Available for October</br>"},
+            title: {text: "<b>Brightness Temperature September to December 2019</b><br>Note: No Data Available for October</br>"},
             barmode: 'group',
             width: 900,
             height: 500
